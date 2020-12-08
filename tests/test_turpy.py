@@ -1,10 +1,10 @@
 import os
-from turpy import __version__
+# from turpy import __version__
 from turpy.io.load_yaml import load_yaml
 from turpy.utils import script_as_module
 
-def test_version():
-    assert __version__ == '0.1.3'
+# def test_version():
+#    assert __version__ == 0.1.3
 
 def test_load_yaml(filepath: str = 'tests/test_yaml.yaml'):
     """ Tests load_yaml for `filepath` string"""
