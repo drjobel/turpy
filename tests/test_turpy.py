@@ -7,7 +7,7 @@ from io import BytesIO, StringIO, IOBase
 from typing import Union
 
 # def test_version():
-#    assert __version__ == 0.1.3
+#    assert __version__ == 0.1.5
 
 
 def test_load_yaml(file: Union[str, BytesIO, StringIO] = 'tests/test_yaml.yaml'):
