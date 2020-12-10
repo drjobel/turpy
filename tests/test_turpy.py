@@ -7,15 +7,26 @@ from io import BytesIO, StringIO, IOBase
 from typing import Union
 
 # def test_version():
-#    assert __version__ == 0.1.5
+#    assert __version__ == 0.1.6
 
 
-def test_load_yaml(file: Union[str, BytesIO, StringIO] = 'tests/test_yaml.yaml'):
+def test_load_yaml_file(file: Union[str, BytesIO, StringIO] = StringIO("test: Ok")):
     """ Tests load_yaml for `filepath` string"""
+    
     assert file is not None
-    assert isinstance(file, str)
-    assert load_yaml(file=file)
+    assert isinstance(file, BytesIO) or isinstance(file, StringIO)
     my_dict = load_yaml(file=file)
+    assert my_dict is not None
+    assert isinstance(my_dict, dict)
+
+
+def test_load_yaml_filepath(filepath: str = 'tests/test_yaml.yaml'):
+    """ Tests load_yaml for `filepath` string"""
+
+    assert filepath is not None
+    assert os.path.isfile(os.path.abspath(filepath))
+
+    my_dict = load_yaml(filepath=filepath)
     assert my_dict is not None
     assert isinstance(my_dict, dict)
 
