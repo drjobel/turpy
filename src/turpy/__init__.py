@@ -40,11 +40,14 @@ class DataLineage():
     """
     metadata: dict()
 
+    def __init__(self, metadata:dict):
+        self.metadata = metadata
+
+    def update(self, metadata:dict):
+        self.metadata.update(metadata)
+
     def serialize(self):
         """Makes the metadata json friendly
         """
         return sterilize(self.metadata)
 
-
-
-   

@@ -2,6 +2,7 @@ import os
 # from turpy import __version__
 from turpy.io.load_yaml import load_yaml
 from turpy.utils import script_as_module
+from turpy import DataLineage
 
 from io import BytesIO, StringIO, IOBase
 from typing import Union
@@ -40,4 +41,13 @@ def test_script_as_module(
     assert os.path.isfile(module_filepath)
     assert package_path is not None
     assert os.path.isdir(package_path)
+
+def test_datalineage():
+    lineage = DataLineage(metadata={})
+    assert isinstance(lineage.metadata, dict)
+    lineage.update({'test': True})
+    assert lineage.metadata['test'] == True
+
+
+
 
