@@ -4,7 +4,7 @@ from turpy.io.load_yaml import load_yaml
 from turpy.utils import script_as_module
 from turpy import Metadata
 
-from io import BytesIO, StringIO, IOBase
+from io import BytesIO, StringIO
 from typing import Union
 
 # def test_version():

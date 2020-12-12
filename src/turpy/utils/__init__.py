@@ -1,9 +1,7 @@
 import importlib
 import os
 import sys
-import logging
-logging.basicConfig(
-    format=' % (asctime)s | %(name)s | %(levelname)s | %(message)s', level=40)
+from turpy.logger import log
 
 
 def script_as_module(module_filepath: str, package_path: str = './project/services/'):
@@ -32,7 +30,7 @@ def script_as_module(module_filepath: str, package_path: str = './project/servic
     try:
         module = importlib.util.module_from_spec(spec)
     except Exception as e:
-        logging.error(e)
+        log.error(e)
         return False
     else:
         spec.loader.exec_module(module)
