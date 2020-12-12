@@ -35,7 +35,7 @@ def sterilize(obj):
 
 
 @dataclass(init=True, repr=True)
-class DataLineage():
+class Metadata():
     """Class for keeping track of secrets
     """
     metadata: dict()
@@ -46,8 +46,11 @@ class DataLineage():
     def update(self, metadata:dict):
         self.metadata.update(metadata)
 
-    def serialize(self):
+    def serialize(self, obj=None):
         """Makes the metadata json friendly
         """
-        return sterilize(self.metadata)
+        if obj is None:
+            return sterilize(self.metadata)
+        else:
+            return sterilize(obj=obj)
 
