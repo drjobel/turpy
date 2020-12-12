@@ -2,7 +2,6 @@ import os
 import yaml
 from io import BytesIO, StringIO
 from typing import Union
-from turpy.logger import log
 
 
 def load_yaml(file: Union[BytesIO, StringIO] = None, filepath:str = None) -> dict:
@@ -26,12 +25,12 @@ def load_yaml(file: Union[BytesIO, StringIO] = None, filepath:str = None) -> dic
     assert file is not None or filepath is not None
 
     if file is not None:
-        assert isinstance(file, BytesIO) or isinstance(file, StringIO) or 
+        assert isinstance(file, BytesIO) or isinstance(file, StringIO) 
 
         try:
             yaml_data = yaml.safe_load(file.read())
         except Exception as msg:
-            log.error(f'File loading error. \n {msg}')
+            print(f'File loading error. \n {msg}')
             return None
         else:
             return yaml_data
@@ -44,7 +43,7 @@ def load_yaml(file: Union[BytesIO, StringIO] = None, filepath:str = None) -> dic
             try:
                 yaml_data = yaml.safe_load(file_descriptor)
             except Exception as msg:
-                log.error(f'File loading error. \n {msg}')
+                print(f'File loading error. \n {msg}')
                 return None
             else:
                 return yaml_data
