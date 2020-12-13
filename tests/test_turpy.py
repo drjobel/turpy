@@ -1,7 +1,7 @@
 import os
 # from turpy import __version__
 from turpy.io.load_yaml import load_yaml
-from turpy.utils import script_as_module
+from turpy.utils import script_as_module, string_search_in_list
 from turpy import Metadata
 
 from io import BytesIO, StringIO
@@ -49,6 +49,14 @@ def test_metadata():
     metadata.update({'test': True})
     assert metadata['test'] == True
 
+
+def test_string_search_in_list(
+    input_string='one', 
+    searching_list=['There is ONE', 'two times']):
+    assert string_search_in_list(
+        input_string=input_string,
+        searching_list = searching_list
+        )[0] == 'There is ONE'
 
 
 

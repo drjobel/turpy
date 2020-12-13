@@ -2,6 +2,18 @@ import importlib
 import os
 import sys
 from turpy.logger import log
+from typing import List
+import re
+
+
+def string_search_in_list(input_string:str, searching_list:List[str]):
+    """List of items where a particular string matches (case insensitive) items in a list of strings.
+    
+    :returns: items in list where there was a match
+
+    """
+    r = re.compile(input_string, re.IGNORECASE)
+    return list(filter(r.search, searching_list))
 
 
 def script_as_module(module_filepath: str, package_path: str = './project/services/'):
