@@ -1,7 +1,7 @@
 import math
 import geopy
 from decimal import Decimal
-from geopy.distance import VincentyDistance
+
 
 
 class GeoLocation:
@@ -132,51 +132,6 @@ class GeoLocation:
 
 
 #
-
-def vincenty_destination(**kvargs):
-    """Calculates the Vicenty-based destination point in latitude_dd and longitude_dd, giving a starting point in
-        in decimal degrees, distance in meters and bearing in decimal degrees.
-
-         :example:
-            longitude_dd = 18.49403,
-            latitude_dd = 63.04319,
-            bearing_deg = 240,
-            distance_m:float = 7
-
-        :source:
-        # http://stackoverflow.com/questions/24427828/calculate-point-based-on-distance-and-direction
-    """
-    if ('latitude_dd' in kvargs) and ('longitude_dd' in kvargs) and \
-            ('bearing_deg' in kvargs) and ('distance_m' in kvargs):
-        # Define starting point.
-        # Point tuple of(latitude, longitude),
-        start = geopy.Point(
-            latitude=kvargs['latitude_dd'], longitude=kvargs['longitude_dd'])
-        # Define a general distance object, initialized with distance_m.
-
-        distance_m = kvargs['distance_m']
-        if type(distance_m) == str:
-            try:
-                distance_m = float(distance_m)
-            except Exception as msg:
-                print(msg)
-
-        d = VincentyDistance(meters=distance_m)
-        # Use the `destination` method with a bearing_deg ('0' is north)
-        # in order to go from point `start` a distance_m to north.
-        bearing = kvargs['bearing_deg']
-        destination_latitude_dd, destination_longitude_dd, _ = \
-            d.destination(point=start, bearing=bearing)
-        # harmonizing as string
-        latitude_dd_solution = format(destination_latitude_dd, '.6f')
-        longitude_dd_solution = format(destination_longitude_dd, '.6f')
-        return {'latitude_dd': latitude_dd_solution,
-                'longitude_dd': longitude_dd_solution}
-    else:
-        print('Error: please check your kvargs contain a dictionary with the format: \n'
-              '{}')
-
-
 def midpoint_location(
     start_latitude_dd:float, 
     start_longitude_dd:float, 
