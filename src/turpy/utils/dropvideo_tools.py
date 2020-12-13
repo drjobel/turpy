@@ -32,7 +32,7 @@ def __subset_generator(
             yield subset, i
 
 
-def dropvideo_section_to_aggregate(df: pd.DataFrame, biota_colnames=List(str), video_section_id: str 'video_section_id'):
+def dropvideo_section_to_aggregate(df: pd.DataFrame, biota_colnames:list, video_section_id: str ='video_section_id'):
     """Summarizes biota occurrences in the raw dropvideo dataframe
 
     :param df: Pandas Dataframe with the raw dropvideo data

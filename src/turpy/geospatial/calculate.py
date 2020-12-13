@@ -177,26 +177,24 @@ def vincenty_destination(**kvargs):
               '{}')
 
 
-def midpoint_location(**geolocation_dict) -> dict():
+def midpoint_location(
+    start_latitude_dd:float, 
+    start_longitude_dd:float, 
+    stop_latitude_dd:float, 
+    stop_longitude_dd:float) -> dict():
     """Calculates a midpoint location based on the start and stop coordinates given by
     a `geolocation_dict`.
 
-    :params geolocation_dict:
-    The expected arguments for geolocation_dict
-        geolocation_dict = {'longitude_dd':{'start':21.24079758, 'stop':21.24064435},
-                            'latitude_dd':{'start':64.91360682, 'stop':64.91355332}}
-
-        *NEW* replaced `['end']` for `['stop']`
-
-    :
+    :params :
+    
     """
     #  Point tuple of(latitude, longitude)
 
-    start = geopy.Point(latitude=Decimal(geolocation_dict['latitude_dd']['start']),
-                        longitude=Decimal(geolocation_dict['longitude_dd']['start']))
+    start = geopy.Point(latitude=Decimal(start_latitude_dd),
+                        longitude=Decimal(start_longitude_dd))
 
-    end = geopy.Point(latitude=Decimal(geolocation_dict['latitude_dd']['stop']),
-                      longitude=Decimal(geolocation_dict['longitude_dd']['stop']))
+    end = geopy.Point(latitude=Decimal(stop_latitude_dd),
+                      longitude=Decimal(stop_longitude_dd))
 
     a_lat, a_lon = math.radians(start.latitude), math.radians(start.longitude)
     b_lat, b_lon = math.radians(end.latitude), math.radians(end.longitude)
