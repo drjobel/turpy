@@ -32,7 +32,7 @@ def __subset_generator(
             yield subset, i
 
 
-def dropvideo_section_to_aggregate(df: pd.DataFrame, biota_colnames:list, video_section_id: str ='video_section_id'):
+def dropvideo_section_to_aggregate(df: pd.DataFrame, colnames:list, video_section_id: str ='video_section_id'):
     """Summarizes biota occurrences in the raw dropvideo dataframe
 
     :param df: Pandas Dataframe with the raw dropvideo data
@@ -60,11 +60,11 @@ def dropvideo_section_to_aggregate(df: pd.DataFrame, biota_colnames:list, video_
             # Initialization #############################################
             
             df_holder = df[is_row_one].copy()
-            log.info('Summarizing Dropvideo `biota_colnames`')
+            log.info('Summarizing Dropvideo `colnames`')
 
             for subset, i in __subset_generator(df=df, is_row_one=is_row_one):
 
-                for col in biota_colnames:
+                for col in colnames:
                     # NEW API [2019-01-23]
                     check_presence = subset[col].iloc[10]
                     is_presence = 1 if check_presence != "" and float(
@@ -74,7 +74,7 @@ def dropvideo_section_to_aggregate(df: pd.DataFrame, biota_colnames:list, video_
                         percent_cover = sum([int(float(x)) for x in list(
                             subset[col].iloc[0:10]) if x not in ['', ' ', None]])
                     except Exception as msg:
-                        log.error('initialization_raw_dropvideo_subset_biota_colnames: index: `{}`,  '
+                        log.error('initialization_raw_dropvideo_subset_colnames: index: `{}`,  '
                                      'subset : `{}`, error_message: `{}`'.format(i, subset[col], msg))
 
                         
