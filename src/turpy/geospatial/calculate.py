@@ -163,8 +163,8 @@ def midpoint_location(
     mid_lon = a_lon + math.atan2(b_y, math.cos(a_lat) + b_x)
     # Normalise
     mid_lon = (mid_lon + 3 * math.pi) % (2 * math.pi) - math.pi
-    return {'latitude_dd': format(math.degrees(mid_lat), '.6f'),
-            'longitude_dd': format(math.degrees(mid_lon), '.6f')}
+    return {'prep_latitude_dd': format(math.degrees(mid_lat), '.6f'),
+            'prep_longitude_dd': format(math.degrees(mid_lon), '.6f')}
 
 
 def initial_compass_bearing(point_a, point_b):
