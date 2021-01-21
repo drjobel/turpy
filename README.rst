@@ -29,3 +29,15 @@ To install `turpy`, along with the tools you need to develop and run tests, rin 
 ```bash
 $ pip install -e .[dev]
 ``` 
+
+# Build
+
+cd to ~/develop/turpy/
+
+Change the version number in the `pyproject.toml` of the package
+
+```bash
+$ poetry build
+$ poetry install
+$ poetry publish
+```
