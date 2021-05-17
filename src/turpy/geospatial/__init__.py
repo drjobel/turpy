@@ -14,7 +14,7 @@ logging.basicConfig(
 
 def geometry_centroids(
     gdf:gpd.GeoDataFrame,
-    round_up_crs_list:list = ['EPSG:3006', 'EPSG:3035'] )-> List[Tuple[Point]]:
+    round_up_crs_list:list = ['epsg:3006', 'epsg:3035'] )-> List[Tuple[Point]]:
     """Returns the `centroids` of the input `GeoDataFrame`.
     WARNING: Do not add `EPSG:4326` (WGS84) or non projected coordinate systems 
     into the `round_up_crs_list` as it will decrease precision.

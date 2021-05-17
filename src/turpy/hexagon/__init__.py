@@ -90,14 +90,6 @@ def build_hexagon_grid(roi:gpd.GeoDataFrame, seed_point:tuple, distance_between_
             if p.centroid.within(roi.unary_union):    # roi.envelope.unary_union    
                 hexes.append(p)
 
-        for i in range(1, num_hor): # num_hor*num_ver
-            column = i % num_hor * -1
-            row = j # i // num_hor
-            even = row % 2  # the even rows of hexagons has w/2 offset on the x-axis compared to odd rows.    
-
-            p = Polygon(hexagon_corners(( (column*w + even * w/2)+ seed_point[0], (row*h * 3/4)+seed_point[1]), w = w))
-            if p.centroid.within(roi.unary_union):        
-                hexes.append(p)
     # hexagon_grid            
     return gpd.GeoDataFrame(index=range(0, len(hexes)), crs=roi.crs, geometry=hexes)
 
